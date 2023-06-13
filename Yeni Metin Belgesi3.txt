@@ -1,0 +1,23 @@
+
+3.soru 
+  B)
+import pandas as pd
+import numpy as np
+
+data = {
+    'x': [1, 2, 2, 3, 4, 5, 6, 8, 10, 11],
+    'y': [3, 3, 3, 9, 7, 2, 8, 6, 6, 1],
+    'z': ['negatif', 'pozitif', 'pozitif', 'negatif', 'negatif', 'pozitif', 'pozitif', 'negatif', 'negatif', 'negatif']
+}
+
+df = pd.DataFrame(data)
+
+# Yeni değer için Öklid mesafesini hesapla
+new_x = 7
+new_y = 3
+df['distance'] = np.sqrt((df['x'] - new_x) ** 2 + (df['y'] - new_y) ** 2)
+
+# Yakınlık sırasını hesapla
+df['similarity_rank'] = df['distance'].rank(ascending=True)
+
+print(df)

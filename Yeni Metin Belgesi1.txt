@@ -1,0 +1,52 @@
+1.SORU 
+   B)
+import pandas as pd
+
+data = {
+    'Bölünme': [],
+    'Sol': [],
+    'Sağ': []
+}
+
+# Koşullara göre örnek sayılarını belirleme
+bolumler = ['maaş = normal', 'maaş = yüksek', 'maaş = düşük', 'deneyim = yok', 'deneyim = orta', 'deneyim = iyi', 'görev = uzman', 'görev = yönetici']
+sol_sayilar = []
+sag_sayilar = []
+
+for i, bolum in enumerate(bolumler):
+    sol_sayi = 0
+    sag_sayi = 0
+    
+    if i == 0:
+        sol_sayi = df[df['maaş'] == 'normal'].shape[0]
+        sag_sayi = df[(df['maaş'] == 'düşük') | (df['maaş'] == 'yüksek')].shape[0]
+    elif i == 1:
+        sol_sayi = df[df['maaş'] == 'yüksek'].shape[0]
+        sag_sayi = df[(df['maaş'] == 'düşük') | (df['maaş'] == 'normal')].shape[0]
+    elif i == 2:
+        sol_sayi = df[df['maaş'] == 'düşük'].shape[0]
+        sag_sayi = df[(df['maaş'] == 'normal') | (df['maaş'] == 'yüksek')].shape[0]
+    elif i == 3:
+        sol_sayi = df[df['deneyim'] == 'yok'].shape[0]
+        sag_sayi = df[(df['deneyim'] == 'orta') | (df['deneyim'] == 'iyi')].shape[0]
+    elif i == 4:
+        sol_sayi = df[df['deneyim'] == 'orta'].shape[0]
+        sag_sayi = df[(df['deneyim'] == 'yok') | (df['deneyim'] == 'iyi')].shape[0]
+    elif i == 5:
+        sol_sayi = df[df['deneyim'] == 'iyi'].shape[0]
+        sag_sayi = df[(df['deneyim'] == 'yok') | (df['deneyim'] == 'orta')].shape[0]
+    elif i == 6:
+        sol_sayi = df[df['görev'] == 'uzman'].shape[0]
+        sag_sayi = df[df['görev'] == 'yönetici'].shape[0]
+    elif i == 7:
+        sol_sayi = df[df['görev'] == 'yönetici'].shape[0]
+        sag_sayi = df[df['görev'] == 'uzman'].shape[0]
+    
+    sol_sayilar.append(sol_sayi)
+    sag_sayilar.append(sag_sayi)
+    data['Bölünme'].append(f'{i+1}. Bölünme')
+    data['Sol'].append(sol_sayi)
+    data['Sağ'].append(sag_sayi)
+
+df_sayilar = pd.DataFrame(data)
+print(df_sayilar)

@@ -1,0 +1,17 @@
+3.SORU
+  A)
+
+    import pandas as pd
+
+data = {
+    'x': [1, 2, 2, 3, 4, 5, 6, 8, 10, 11],
+    'y': [3, 3, 3, 9, 7, 2, 8, 6, 6, 1],
+    'z': ['negatif', 'pozitif', 'pozitif', 'negatif', 'negatif', 'pozitif', 'pozitif', 'negatif', 'negatif', 'negatif']
+}
+
+df = pd.DataFrame(data)
+print(df)
+
+print("X Koordinatları:", df['x'].tolist())
+print("Y Koordinatları:", df['y'].tolist())
+print("Z Koordinatları:", df['z'].tolist())
